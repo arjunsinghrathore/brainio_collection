@@ -1,0 +1,22 @@
+Metadata-Version: 1.1
+Name: brainio-collection
+Version: 0.1.0
+Summary: BrainIO Collection of brain data.
+Home-page: https://github.com/brain-score/brainio_collection
+Author: Jon Prescott-Roy, Martin Schrimpf
+Author-email: jjpr@mit.edu, mschrimpf@mit.edu
+License: MIT license
+Description: [![Build Status](https://travis-ci.com/brain-score/brainio_collection.svg?token=vqt7d2yhhpLGwHsiTZvT&branch=master)](https://travis-ci.com/brain-score/brainio_collection)
+        
+        # BrainIO collection
+        
+        Utility to retrieve and write to the BrainIO collection of stimulus sets and assemblies.
+        
+        
+Keywords: BrainIO
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.7
