@@ -136,6 +136,15 @@ class AssemblyLoader:
             assy[col] = (axis_name, merged[col])
         return assy
 
+class StimulusSet_local(pd.DataFrame):
+    # http://pandas.pydata.org/pandas-docs/stable/development/extending.html#subclassing-pandas-data-structures
+    _metadata = pd.DataFrame._metadata + ["identifier"]
+
+    @property
+    def _constructor(self):
+        return StimulusSet
+
+
 class AssemblyLoader_local:
     """
     Loads an assembly from a file.
@@ -161,7 +170,10 @@ class AssemblyLoader_local:
         result = data_array
         result = class_object(data=result)
         result.attrs["stimulus_set_identifier"] = self.stimulus_set_identifier
-        result.attrs["stimulus_set"] = pd.read_csv(self.local_path.split('.nc')[0] + '.csv')
+        stimulus_set_pd = pd.read_csv(self.local_path.split('.nc')[0] + '.csv')
+        stimulus_set_pd = StimulusSet_local(stimulus_set_pd)
+        stimulus_set_pd.identifier = self.stimulus_set_identifier
+        result.attrs["stimulus_set"] = stimulus_set_pd
         return result
 
     # def merge_stimulus_set_meta(self, assy, stimulus_set):
