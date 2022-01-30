@@ -161,7 +161,7 @@ class AssemblyLoader_local:
         result = data_array
         result = class_object(data=result)
         result.attrs["stimulus_set_identifier"] = self.stimulus_set_identifier
-        result.attrs["stimulus_set"] = pd.read_csv(local_path.split('.nc')[0] + '.csv')
+        result.attrs["stimulus_set"] = pd.read_csv(self.local_path.split('.nc')[0] + '.csv')
         return result
 
     # def merge_stimulus_set_meta(self, assy, stimulus_set):
