@@ -142,7 +142,7 @@ class StimulusSet_local(pd.DataFrame):
 
     @property
     def _constructor(self):
-        return StimulusSet
+        return StimulusSet_local
 
 
 class AssemblyLoader_local:
