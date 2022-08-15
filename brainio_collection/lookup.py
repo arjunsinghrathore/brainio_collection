@@ -11,7 +11,8 @@ TYPE_ASSEMBLY = 'assembly'
 TYPE_STIMULUS_SET = 'stimulus_set'
 
 # path = Path(__file__).parent / "lookup.csv"
-path = Path(__file__).parent / "lookup_shein.csv"
+# path = Path(__file__).parent / "lookup_shein.csv"
+path = Path(__file__).parent / "lookup_shein_obf.csv"
 _logger.debug(f"Loading lookup from {path}")
 print(f"Loading lookup from {path}")  # print because logging usually isn't set up at this point during import
 data = pd.read_csv(path)

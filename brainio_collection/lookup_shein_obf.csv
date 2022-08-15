@@ -242,3 +242,4 @@ dicarlo.BashivanKar2019.synthetic,stimulus_set,,S3,https://brainio.dicarlo.s3.am
 dicarlo.BashivanKar2019.synthetic,assembly,NeuronRecordingAssembly,S3,https://brainio.dicarlo.s3.amazonaws.com/assy_dicarlo_BashivanKar2019_synthetic.nc,f687c8d26f8943dc379dbcbe94d3feb148400c6b,dicarlo.BashivanKar2019.synthetic
 sheinberg.neural.IT,assembly,NeuronRecordingAssembly,local,/media/data_cifs/projects/prj_brainscore/hackaton2021/.brainio/sheinberg_data_IT/sheinberg_data.nc,,sheinberg.IT
 sheinberg.neural.IT.4more,assembly,NeuronRecordingAssembly,local,/media/data_cifs/projects/prj_brainscore/hackaton2021/.brainio/sheinberg_data_IT/sheinberg_data_4_or_more.nc,,sheinberg.IT.4_or_more
+sheinberg.neural.IT.1moreobf,assembly,NeuronRecordingAssembly,local,/media/data_cifs/projects/prj_brainscore/hackaton2021/.brainio/sheinberg_data_IT/sheinberg_data_1_or_more_and_object_file.nc,,sheinberg.IT.1_or_more_obf

@@ -19,6 +19,8 @@ from brainio_collection.lookup import lookup_assembly, lookup_stimulus_set, sha1
 
 _local_data_path = os.path.expanduser(os.getenv('BRAINIO_HOME', '~/.brainio'))
 
+shein_stimuli_directory = '/media/data_cifs/projects/prj_brainscore/hackaton2021/.brainio/sheinberg_data_IT/images'
+
 _logger = logging.getLogger(__name__)
 
 
@@ -170,8 +172,15 @@ class AssemblyLoader_local:
         result = data_array
         result = class_object(data=result)
         result.attrs["stimulus_set_identifier"] = self.stimulus_set_identifier
-        stimulus_set_pd = pd.read_csv(self.local_path.split('.nc')[0] + '.csv')
-        stimulus_set_pd = StimulusSet_local(stimulus_set_pd)
+
+        # 1
+        # stimulus_set_pd = pd.read_csv(self.local_path.split('.nc')[0] + '.csv')
+        # stimulus_set_pd = StimulusSet_local(stimulus_set_pd)
+        # 2
+        csv_path = self.local_path.split('.nc')[0] + '.csv' 
+        loader = StimulusSetLoader(csv_path=csv_path, stimuli_directory=shein_stimuli_directory, cls=None)
+        stimulus_set_pd = loader.load()
+
         stimulus_set_pd.identifier = self.stimulus_set_identifier
         result.attrs["stimulus_set"] = stimulus_set_pd
         return result
@@ -198,6 +207,8 @@ class StimulusSetLoader:
         stimulus_set.image_paths = {row['image_id']: os.path.join(self.stimuli_directory, row['filename'])
                                     for _, row in stimulus_set.iterrows()}
         assert all(os.path.isfile(image_path) for image_path in stimulus_set.image_paths.values())
+
+        print('stimulus_set image paths :: ',len(stimulus_set.image_paths))
         return stimulus_set
 
 
@@ -243,6 +254,7 @@ LOCATION_TYPE : 'local'
 '''
 def get_assembly(identifier):
     assembly_lookup = lookup_assembly(identifier)
+    print('assembly_lookup[location_type] :: ',assembly_lookup['location_type'])
     if assembly_lookup['location_type'] == 'local':
         local_path = assembly_lookup['location']
         loader = AssemblyLoader_local(local_path, cls=assembly_lookup['class'],
